@@ -152,5 +152,9 @@
       }
     }
   },
-  "defaultProject": "Website"
+  "defaultProject": "Website",
+  "cli": {
+    "analytics": "3028edac-c7e1-4de6-b3e1-8bd76e65f95d",
+    "defaultCollection": "@datorama/akita"
+  }
 }

@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit {
   heroes: Hero[] = [];
 
   hero: Hero;
-  artifactByKind: { [kind: string]: Artifact } = { };
+  artifactByKind: { [kind: string]: Artifact } = {};
 
   ngOnInit(): void {
     this.route.params.subscribe((params: ParamMap) => {
@@ -46,11 +46,17 @@ export class AccountComponent implements OnInit {
           this.account = dump;
           this.heroes = dump.heroes.sort((a, b) => {
             let c = a.name.localeCompare(b.name);
-            if (c !== 0) return c;
+            if (c !== 0) {
+              return c;
+            }
             c = b.grade.localeCompare(a.grade);
-            if (c !== 0) return c;
+            if (c !== 0) {
+              return c;
+            }
             c = b.awakenLevel - a.awakenLevel;
-            if (c !== 0) return c;
+            if (c !== 0) {
+              return c;
+            }
             return b.level - a.level;
           });
         });
@@ -78,7 +84,7 @@ export class AccountComponent implements OnInit {
   editHero(hero: Hero) {
     this.hero = new Hero(<IHero>{ ...hero });
     const artifacts = hero.artifacts || [];
-    this.hero.artifacts = [ ...artifacts ];
+    this.hero.artifacts = [...artifacts];
     this.artifactByKind = {};
     for (let id of this.hero.artifacts) {
       const artifact = this.account.artifactsById[id];
@@ -116,7 +122,7 @@ export class AccountComponent implements OnInit {
       {
         data: {
           account: this.account,
-          hero: this.hero
+          hero: this.hero,
         },
         width: '800px'
       });
